@@ -21,6 +21,25 @@ var getInputAvconvOptions = function(source) {
 	if (source.avconvOptions !== undefined && source.avconvOptions.input !== undefined)
 		options = options.concat(source.avconvOptions.input);
 
+	if (source.avconvOptions !== undefined && source.avconvOptions.debug !== undefined)
+		options = options.concat([
+			'-v', 
+			source.avconvOptions.debug
+		]);
+	
+	if (source.avconvOptions !== undefined && source.avconvOptions.useragent !== undefined)
+		options = options.concat([
+			'-user-agent', 
+			source.avconvOptions.useragent
+		]);
+
+	if (source.avconvOptions !== undefined && source.avconvOptions.cookie !== undefined)
+		options = options.concat([
+			'-headers', 
+			source.avconvOptions.cookie
+		]);
+
+	
 	return options.concat([
 		'-i',
 		source.source

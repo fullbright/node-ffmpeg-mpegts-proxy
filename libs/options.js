@@ -34,10 +34,14 @@ var getInputAvconvOptions = function(source) {
 		]);
 
 	if (source.avconvOptions !== undefined && source.avconvOptions.cookie !== undefined)
+	{
+		var FileCookieStore = require('tough-cookie-filestore');
+		var j = request.jar(new FileCookieStore('../cookies.json'));
 		options = options.concat([
 			'-headers', 
 			source.avconvOptions.cookie
 		]);
+	}
 
 	
 	return options.concat([
